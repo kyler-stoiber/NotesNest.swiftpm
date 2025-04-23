@@ -1,10 +1,12 @@
+
+
 import SwiftUI
 
 @main
-struct MyApp: App {
+struct Custom_CalendarApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CalendarView()
         }
     }
 }
