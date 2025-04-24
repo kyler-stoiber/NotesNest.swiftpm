@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let notebooks = ["Enter Notebook", "Notebook 2", "Notebook 3"]
+    let notebooks = ["Enter Notebook"]
     @State private var currentNotebook = 0
     @State private var offset: CGFloat = 0
     @State private var direction: CGFloat = 1 // 1 for right, -1 for left
@@ -12,6 +12,32 @@ struct ContentView: View {
     var body: some View {
         
         VStack {
+            
+            HStack {
+                
+                //add
+                Button {
+                    
+                } label: {
+                    
+                }
+                
+                //remove
+                Button {
+                    
+                } label: {
+                    
+                }
+                
+                //edit
+                Button {
+                    
+                } label: {
+                    
+                }
+                
+            }
+            
             HStack {
                 Button(action: {
                     slideToPrevious()
@@ -63,6 +89,10 @@ struct ContentView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.gray.opacity(0.2))
+            
+            Divider()
+            
+            CalendarView()
         }
     }
         // MARK: - Slide Logic
@@ -86,17 +116,13 @@ struct ContentView: View {
                 currentNotebook = (currentNotebook - 1 + notebooks.count) % notebooks.count
             }
             
-        Text("Hello World")
-        
-        Divider()
-        
-        CalendarView()
         
         }
+    
+
         
     }
     
-    }
 
 
 #Preview {
