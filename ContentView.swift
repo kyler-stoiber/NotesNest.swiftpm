@@ -2,11 +2,13 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let notebooks = ["Enter Notebook"]
-    @State private var currentNotebook = 0
+    @State var folder: [Folder] = [ ]
+    @State private var currentFolder = 0
     @State private var offset: CGFloat = 0
     @State private var direction: CGFloat = 1 // 1 for right, -1 for left
     @Namespace private var animation
+    @State var delete: Int?
+
     
     
     var body: some View {
@@ -27,9 +29,17 @@ struct ContentView: View {
                 
                 //remove
                 Button {
-                    
+                    delete = currentFolder
+                    let max = folder.count
+                    if (((delete ?? 0) <= max) && !(folder.isEmpty) && (delete ?? 0) >= 0){
+                        folder.remove(at: (delete ?? 0))
+                    }
+                    delete = nil
+                   
                 } label: {
-                    
+                    Image(systemName: "folder.badge.minus.fill")
+                        .resizable()
+                        .frame(width: 35, height: 25)
                 }
                 
                 //edit
@@ -58,14 +68,14 @@ struct ContentView: View {
                     .fill(Color.white)
                     .shadow(radius: 10)
                     .frame(width: 200, height: 300)
-                    .overlay(
-                        Text(notebooks[currentNotebook])
-                            .font(.title)
-                            .foregroundColor(.black)
-                    )
+                    //.overlay(
+                        //Text()
+                            //.font(.title)
+                           // .foregroundColor(.black)
+                    //)
                     .offset(x: offset)
                     .animation(.easeInOut(duration: 0.4), value: offset)
-                    .onChange(of: currentNotebook) { _ in
+                    .onChange(of: currentFolder) { _ in
                         // Reset offset after change
                         offset = direction * 400
                         withAnimation(.easeInOut(duration: 0.4)) {
@@ -106,7 +116,7 @@ struct ContentView: View {
                 offset = 400
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                currentNotebook = (currentNotebook + 1) % notebooks.count
+                currentFolder = (currentFolder + 1) % folder.count
             }
         }
         
@@ -116,7 +126,7 @@ struct ContentView: View {
                 offset = -400
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                currentNotebook = (currentNotebook - 1 + notebooks.count) % notebooks.count
+                currentFolder = (currentFolder - 1 + folder.count) % folder.count
             }
             
         
