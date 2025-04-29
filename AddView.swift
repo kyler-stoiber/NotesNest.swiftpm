@@ -13,7 +13,7 @@ struct AddView: View {
     
     @State var folderDesc = ""
     @State var folderSubject = ""
-    @State var folderDate = ""
+    //@State var folderDate = ""
     @State var folderColor: Color = .blue
 
         
@@ -22,32 +22,59 @@ struct AddView: View {
             
             Text("Enter Folder Details")
                 .fontWeight(.bold)
+                .font(.system(size: 30))
                 .multilineTextAlignment(.center)
                 .frame(width: 400, height: 100)
                 .background(.blue)
                 .opacity(0.7)
             
-            HStack {
+            VStack {
                 
-                TextField("Subject:", text: $folderSubject)
-                    .frame(width: 120, height: 50)
-                    .background(Color.green.opacity(0.7))
-                    .multilineTextAlignment(.center)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                
-                
-                TextField("Description:", text: $folderDesc)
-                    .frame(width: 120, height: 50)
-                    .background(Color.green.opacity(0.7))
-                    .multilineTextAlignment(.center)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                HStack {
+                    
+                    TextField("Subject:", text: $folderSubject)
+                        .padding(.leading, 10)
+                        .frame(width: 300, height: 50)
+                        .background(Color.green.opacity(0.7))
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .offset(x: -10, y: 0)
 
+                    
+                    Image(systemName: "pencil.and.ellipsis.rectangle")
+                        .resizable()
+                        .frame(width: 40, height: 30)
+                        .offset(x: 5, y: -5)
 
+                }
+                
+                HStack {
+                    
+                    TextField("Description:", text: $folderDesc)
+                        .padding(.leading, 10)
+                        .frame(width: 300, height: 50)
+                        .background(Color.green.opacity(0.7))
+                        .multilineTextAlignment(.leading)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .offset(x: -11, y: 0)
+                    
+                    
+                    Image(systemName: "pencil.and.list.clipboard")
+                        .resizable()
+                        .frame(width: 35, height: 35)
+                        .offset(x: 5, y: 0)
+
+                    
+                }
+
+/*
+                    
                 TextField("Due Date:", text: $folderDate)
                     .frame(width: 120, height: 50)
                     .background(Color.green.opacity(0.7))
                     .multilineTextAlignment(.center)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
+                
+                */
                 
                 
             }
@@ -56,10 +83,12 @@ struct AddView: View {
             Spacer()
             
             Text("Choose Folder Color:")
-                .frame(width: 120, height: 50)
+                .frame(width: 500, height: 40)
                 .background(Color.green.opacity(0.7))
+                .bold()
                 .multilineTextAlignment(.center)
                 .opacity(0.8)
+                .padding(5)
                 
                 
             Spacer()
@@ -180,11 +209,44 @@ struct AddView: View {
             
         }
         
+        Spacer()
+        
+        Text("Folder Preview:")
+        
+        ZStack {
+            
+            var textColor: Color = (folderColor == .black || folderColor == .indigo || folderColor == .blue) ? .white : .black
+
+            RoundedRectangle(cornerRadius: 20)
+                .fill(folderColor)
+                .shadow(radius: 10)
+                .frame(width: 200, height: 300)
+            
+            Text("\(folderSubject)")
+                .foregroundColor(textColor)
+                .font(.system(size: 20))
+                .bold()
+                .frame(width: 180, height: 80, alignment: .topLeading)
+                .padding(.leading, 10)
+                .multilineTextAlignment(.leading)
+                .offset(x: 0, y: -95)
+        
+            Text("\(folderDesc)")
+                .foregroundColor(textColor)
+                .font(.system(size: 20))
+                .padding(.leading, 10)
+                .frame(width: 190, height: 140, alignment: .topLeading)
+                .multilineTextAlignment(.leading)
+                .offset(x: 0, y: 60)
+            
+            
+        }
+        
         Button {
-            let newFolder = Folder(date: folderDate,  desc: folderDesc, subject: folderSubject)
+            let newFolder = Folder(color: folderColor,  desc: folderDesc, subject: folderSubject)
             
             folderList.append(newFolder)
-            folderDate = ""
+            folderColor = .blue
             folderDesc = ""
             folderSubject = ""
         } label: {
@@ -192,11 +254,8 @@ struct AddView: View {
                 .frame(height: 40)
             Image(systemName: "plus.circle")
         }
-    
         
-        Spacer()
-        
-        
+        /*
         NavigationView {
             List {
                 ForEach(folderList, id: \.self) {
@@ -207,6 +266,8 @@ struct AddView: View {
                 }
             }
         }
+        
+        */
     }
 }
 

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Folder: Hashable {
     
-    var date: String
+    var color: Color
     var desc: String
     var subject: String
     

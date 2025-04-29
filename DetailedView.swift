@@ -13,7 +13,7 @@ struct DetailedView: View {
     
     var body: some View {
         Text("Subject: \(selectedFolder.subject)")
-        Text("Due Date: \(selectedFolder.date)")
+        Text("Color: \(selectedFolder.color)")
         Text("Description: \(selectedFolder.desc)")
 
     }
