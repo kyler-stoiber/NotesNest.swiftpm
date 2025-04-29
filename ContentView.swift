@@ -8,7 +8,10 @@ struct ContentView: View {
     @State private var direction: CGFloat = 1 // 1 for right, -1 for left
     @Namespace private var animation
     @State var delete: Int?
-
+    @State var folderName = ""
+    @State var folderDate = ""
+    @State var folderDesc = ""
+    @State private var selectedTab = 0
     
     
     var body: some View {
@@ -18,13 +21,21 @@ struct ContentView: View {
             HStack {
                 
                 //add
-                Button {
-                   
-                } label: {
-                    Image(systemName: "folder.badge.plus.fill")
-                        .resizable()
-                        .frame(width: 35, height: 25)
-                        
+//                Button {
+//                   
+//                } label: {
+//                    Image(systemName: "folder.badge.plus.fill")
+//                        .resizable()
+//                        .frame(width: 35, height: 25)
+//                        
+//                }
+                
+                NavigationView{
+                    NavigationLink(destination: AddView()){
+                        Image(systemName: "folder.badge.plus.fill")
+                            .resizable()
+                            .frame(width: 35, height: 25)
+                    }
                 }
                 
                 //remove
@@ -68,11 +79,11 @@ struct ContentView: View {
                     .fill(Color.white)
                     .shadow(radius: 10)
                     .frame(width: 200, height: 300)
-                    //.overlay(
-                        //Text()
-                            //.font(.title)
-                           // .foregroundColor(.black)
-                    //)
+                    .overlay(
+                        Text(folder.isEmpty ? "No Folder" : folder[currentFolder].subject)
+                                .font(.title)
+                                .foregroundColor(.black)
+                    )
                     .offset(x: offset)
                     .animation(.easeInOut(duration: 0.4), value: offset)
                     .onChange(of: currentFolder) { _ in
