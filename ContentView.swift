@@ -22,14 +22,14 @@ struct ContentView: View {
                 
                 //add
                 
-                    //                Button {
-                    //
-                    //                } label: {
-                    //                    Image(systemName: "folder.badge.plus.fill")
-                    //                        .resizable()
-                    //                        .frame(width: 35, height: 25)
-                    //
-                    //                }
+//                                    Button {
+//                    
+//                                    } label: {
+//                                        Image(systemName: "folder.badge.plus.fill")
+//                                            .resizable()
+//                                            .frame(width: 35, height: 25)
+//                    
+//                                    }
                     
                     NavigationView{
                         NavigationLink(destination: AddView()){
