@@ -40,10 +40,16 @@ struct AddView: View {
                         .offset(x: -10, y: 0)
 
                     
-                    Image(systemName: "pencil.and.ellipsis.rectangle")
-                        .resizable()
-                        .frame(width: 40, height: 30)
-                        .offset(x: 5, y: -5)
+                    Button {
+                        folderSubject = ""
+                    } label: {
+                        Image(systemName: "pencil.and.ellipsis.rectangle")
+                            .resizable()
+                            .frame(width: 40, height: 30)
+                            .offset(x: 5, y: -5)
+                    }
+                    
+                    
 
                 }
                 
@@ -58,10 +64,15 @@ struct AddView: View {
                         .offset(x: -11, y: 0)
                     
                     
-                    Image(systemName: "pencil.and.list.clipboard")
-                        .resizable()
-                        .frame(width: 35, height: 35)
-                        .offset(x: 5, y: 0)
+                    Button {
+                        folderDesc = ""
+                    } label: {
+                        Image(systemName: "pencil.and.list.clipboard")
+                            .resizable()
+                            .frame(width: 35, height: 35)
+                            .offset(x: 5, y: 0)
+                    }
+                    
 
                     
                 }
@@ -244,7 +255,6 @@ struct AddView: View {
         
         Button {
             let newFolder = Folder(color: folderColor,  desc: folderDesc, subject: folderSubject)
-            
             folderList.append(newFolder)
             folderColor = .blue
             folderDesc = ""
