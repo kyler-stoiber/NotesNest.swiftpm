@@ -20,17 +20,9 @@ struct ContentView: View {
             
             HStack {
                 
-                //add
                 
-                    //                Button {
-                    //
-                    //                } label: {
-                    //                    Image(systemName: "folder.badge.plus.fill")
-                    //                        .resizable()
-                    //                        .frame(width: 35, height: 25)
-                    //
-                    //                }
-                    
+                
+        
                     NavigationView{
                         NavigationLink(destination: AddView()){
                             Image(systemName: "folder.badge.plus.fill")
