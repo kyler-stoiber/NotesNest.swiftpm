@@ -16,13 +16,15 @@ struct ContentView: View {
     
     var body: some View {
         
+        
+            
         VStack {
             
             HStack {
                 
                 
                 
-        
+                    /*
                     NavigationView{
                         NavigationLink(destination: AddView()){
                             Image(systemName: "folder.badge.plus.fill")
@@ -30,8 +32,11 @@ struct ContentView: View {
                                 .frame(width: 35, height: 25)
                         }
                     }
+                    */
                     
                     //remove
+                
+                    
                     Button {
                         delete = currentFolder
                         let max = folder.count
@@ -55,6 +60,7 @@ struct ContentView: View {
                     
                 }
                 
+                /*
                 HStack {
                     Button(action: {
                         slideToPrevious()
@@ -107,6 +113,7 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.gray.opacity(0.2))
                 
+                */
                 Divider()
                 
                 CalendarView()
@@ -133,7 +140,7 @@ struct ContentView: View {
                 currentFolder = (currentFolder - 1 + folder.count) % folder.count
             }
             
-            
+        
         }
         
         

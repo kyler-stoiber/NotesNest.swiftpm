@@ -1,18 +1,19 @@
-//
-//  CalendarDayView.swift
-//  NotesNest
-//
-//  Created by Stoiber, Kyler (512144) on 4/30/25.
-//
-
 import SwiftUI
 
 struct CalendarDayView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    let date: Date
 
-#Preview {
-    CalendarDayView()
+    var body: some View {
+        VStack {
+            Text("Calendar Day View")
+                .font(.largeTitle)
+                .padding()
+
+            Text("Selected date: \(date.formatted(date: .long, time: .omitted))")
+                .font(.title2)
+                .padding()
+        }
+        .navigationTitle(date.formatted(.dateTime.day().month().year()))
+        .navigationBarTitleDisplayMode(.inline)
+    }
 }
