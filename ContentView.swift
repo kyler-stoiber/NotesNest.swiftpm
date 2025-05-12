@@ -12,7 +12,7 @@ struct ContentView: View {
     @State var folderDate = ""
     @State var folderDesc = ""
     @State private var selectedTab = 0
-    
+    @State private var calendarIsShowing = true
     
     var body: some View {
         
@@ -24,100 +24,130 @@ struct ContentView: View {
                 
                 
                 
-                    /*
-                    NavigationView{
-                        NavigationLink(destination: AddView()){
-                            Image(systemName: "folder.badge.plus.fill")
-                                .resizable()
-                                .frame(width: 35, height: 25)
-                        }
-                    }
-                    */
-                    
-                    //remove
+                /*
+                 NavigationView{
+                 NavigationLink(destination: AddView()){
+                 Image(systemName: "folder.badge.plus.fill")
+                 .resizable()
+                 .frame(width: 35, height: 25)
+                 }
+                 }
+                 */
+                
+                //remove
+                
                 
                     
-                    Button {
-                        delete = currentFolder
-                        let max = folder.count
-                        if (((delete ?? 0) <= max) && !(folder.isEmpty) && (delete ?? 0) >= 0){
-                            folder.remove(at: (delete ?? 0))
-                        }
-                        delete = nil
-                        
-                    } label: {
-                        Image(systemName: "folder.badge.minus.fill")
-                            .resizable()
-                            .frame(width: 35, height: 25)
-                    }
+                    /*
+                     Stretch2View()
+                     .tabItem {
+                     Label("Stretch #2", systemImage: "02.square")
+                     }
+                     */
                     
-                    //edit
-                    Button {
-                        
-                    } label: {
-                        
-                    }
                     
-                }
+                
+                
+                
                 
                 /*
-                HStack {
-                    Button(action: {
-                        slideToPrevious()
-                    }) {
-                        Image(systemName: "arrow.left.circle.fill")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(.blue)
-                    }
-                    Spacer()
-                    
-                    // Notebook view with sliding animation
-                    
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.white)
-                        .shadow(radius: 10)
-                        .frame(width: 200, height: 300)
-                        .overlay(
-                            Text(folder.isEmpty ? "No Folder" : folder[currentFolder].subject)
-                                .font(.title)
-                                .foregroundColor(.black)
-                        )
-                        .offset(x: offset)
-                        .animation(.easeInOut(duration: 0.4), value: offset)
-                        .onChange(of: currentFolder) { _ in
-                            // Reset offset after change
-                            offset = direction * 400
-                            withAnimation(.easeInOut(duration: 0.4)) {
-                                offset = 0
-                            }
-                        }
-                    
-                    
-                    Spacer()
-                    
-                    // Navigation Buttons
-                    
-                    
-                    Button(action: {
-                        slideToNext()
-                    }) {
-                        Image(systemName: "arrow.right.circle.fill")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(.blue)
-                    }
-                    
-                    .padding(.bottom)
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.gray.opacity(0.2))
+                 
+                 Button {
+                 
+                 
+                 } label: {
+                 Image(systemName: "folder.fill.badge.plus")
+                 .resizable()
+                 .frame(width: 42, height: 30)
+                 .offset(x: -140, y: 0)
+                 }
+                 
+                 
+                 Button {
+                 delete = currentFolder
+                 let max = folder.count
+                 if (((delete ?? 0) <= max) && !(folder.isEmpty) && (delete ?? 0) >= 0){
+                 folder.remove(at: (delete ?? 0))
+                 }
+                 delete = nil
+                 
+                 } label: {
+                 Image(systemName: "folder.badge.minus.fill")
+                 .resizable()
+                 .frame(width: 42, height: 30)
+                 .offset(x: -140, y: 0)
+                 }
+                 
+                 */
                 
-                */
-                Divider()
                 
-                CalendarView()
+                
+                
             }
+            
+            /*
+             HStack {
+             Button(action: {
+             slideToPrevious()
+             }) {
+             Image(systemName: "arrow.left.circle.fill")
+             .resizable()
+             .frame(width: 50, height: 50)
+             .foregroundColor(.blue)
+             }
+             Spacer()
+             
+             // Notebook view with sliding animation
+             
+             RoundedRectangle(cornerRadius: 20)
+             .fill(Color.white)
+             .shadow(radius: 10)
+             .frame(width: 200, height: 300)
+             .overlay(
+             Text(folder.isEmpty ? "No Folder" : folder[currentFolder].subject)
+             .font(.title)
+             .foregroundColor(.black)
+             )
+             .offset(x: offset)
+             .animation(.easeInOut(duration: 0.4), value: offset)
+             .onChange(of: currentFolder) { _ in
+             // Reset offset after change
+             offset = direction * 400
+             withAnimation(.easeInOut(duration: 0.4)) {
+             offset = 0
+             }
+             }
+             
+             
+             Spacer()
+             
+             // Navigation Buttons
+             
+             
+             Button(action: {
+             slideToNext()
+             }) {
+             Image(systemName: "arrow.right.circle.fill")
+             .resizable()
+             .frame(width: 50, height: 50)
+             .foregroundColor(.blue)
+             }
+             
+             .padding(.bottom)
+             }
+             .frame(maxWidth: .infinity, maxHeight: .infinity)
+             .background(Color.gray.opacity(0.2))
+             
+             */
+            Divider()
+            
+            if (calendarIsShowing == true) {
+                CalendarView()
+            } else {
+                
+            }
+        }
+                
         }
         // MARK: - Slide Logic
         
