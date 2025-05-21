@@ -157,8 +157,9 @@ struct ContentView: View {
                         }
                 } else {
                     
-                }
                     
+                }
+                
                 
                 Image(systemName: "folder.badge.plus")
                     .resizable()
