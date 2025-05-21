@@ -15,6 +15,7 @@ struct AddView: View {
     @State var folderSubject = ""
     //@State var folderDate = ""
     @State var folderColor: Color = .blue
+    @State private var calendarIsShowing = true
 
         
     var body: some View {
@@ -23,13 +24,17 @@ struct AddView: View {
             
             VStack{
                 
-                Text("Enter Folder Details")
-                    .fontWeight(.bold)
-                    .font(.system(size: 30))
-                    .multilineTextAlignment(.center)
-                    .frame(width: 400, height: 100)
-                    .background(.blue)
-                    .opacity(0.7)
+                ZStack {
+                    
+                    Text("Enter Folder Details")
+                        .fontWeight(.bold)
+                        .font(.system(size: 30))
+                        .multilineTextAlignment(.center)
+                        .frame(width: 400, height: 50)
+                        .background(.blue)
+                        .opacity(0.7)
+                }
+                
                 
                 VStack {
                     
@@ -94,7 +99,6 @@ struct AddView: View {
                 }
                 
                 
-                Spacer()
                 
                 Text("Choose Folder Color:")
                     .frame(width: 500, height: 40)

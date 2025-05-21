@@ -13,7 +13,7 @@ struct ContentView: View {
     @State var folderDesc = ""
     @State private var selectedTab = 0
     @State private var calendarIsShowing = true
-    
+    @State private var buttonOffset = 0
     var body: some View {
         
         
@@ -139,12 +139,60 @@ struct ContentView: View {
              .background(Color.gray.opacity(0.2))
              
              */
-            Divider()
+            
+            
+            HStack {
+                
+                
+                if calendarIsShowing == false {
+                    
+                    Image(systemName: "arrowshape.turn.up.backward.2.fill")
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                        .offset(x: -110, y: 0)
+                        .bold()
+                        .onTapGesture {
+                            calendarIsShowing = true
+                        }
+                } else {
+                    
+                }
+                    
+                
+                Image(systemName: "folder.badge.plus")
+                    .resizable()
+                    .frame(width: 35, height: 25)
+                    .onTapGesture {
+                        calendarIsShowing = false
+                    }
+                    .offset(x: CGFloat((-20 + buttonOffset)))
+                
+                
+                Image(systemName: "folder.badge.minus")
+                    .resizable()
+                    .frame(width: 35, height: 25)
+                    .onTapGesture {
+                        calendarIsShowing = false
+                    }
+                    .offset(x: CGFloat((2 + buttonOffset)))
+                
+                Image(systemName: "folder.badge.gearshape")
+                    .resizable()
+                    .frame(width: 35, height: 25)
+                    .onTapGesture {
+                        calendarIsShowing = false
+                        buttonOffset = -30
+                    }
+                   // .offset(calendarIsShowing, x: 30 , x: -10)
+                    
+            }
+            
+            
             
             if (calendarIsShowing == true) {
                 CalendarView()
             } else {
-                
+                AddView()
             }
         }
                 
