@@ -157,6 +157,12 @@ struct ContentView: View {
                         }
                 } else {
                     
+                    Image(systemName: "arrowshape.turn.up.backward.2.fill")
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                        .offset(x: -110, y: 0)
+                        .foregroundColor(.white)
+                    
                     
                 }
                 
@@ -167,7 +173,7 @@ struct ContentView: View {
                     .onTapGesture {
                         calendarIsShowing = false
                     }
-                    .offset(x: CGFloat((-20 + buttonOffset)))
+                    .offset(x: -30)
                 
                 
                 Image(systemName: "folder.badge.minus")
@@ -176,14 +182,14 @@ struct ContentView: View {
                     .onTapGesture {
                         calendarIsShowing = false
                     }
-                    .offset(x: CGFloat((2 + buttonOffset)))
+                    .offset(x: -15)
                 
                 Image(systemName: "folder.badge.gearshape")
                     .resizable()
                     .frame(width: 35, height: 25)
                     .onTapGesture {
                         calendarIsShowing = false
-                        buttonOffset = -30
+                        
                     }
                    // .offset(calendarIsShowing, x: 30 , x: -10)
                     
