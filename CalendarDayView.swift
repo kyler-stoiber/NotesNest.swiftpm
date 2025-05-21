@@ -5,6 +5,7 @@ struct CalendarDayView: View {
     @StateObject private var viewModel: CalendarDayViewModel
     @State private var assignmentName = ""
     @State private var deleteIndex = ""
+    @State private var nilBool = false
     
 
     init(date: Date) {
@@ -45,16 +46,29 @@ struct CalendarDayView: View {
                     .frame(width: 100, height: 50)
                     .background(Color.red.opacity(0.7))
                     .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .offset(x: -107, y: 0)
+                    .offset(x: -9, y: 0)
+                    .onSubmit {
+                        deleteIndex = ""
+                    }
 
                 Button {
-                    viewModel.removeAssignment(Int(deleteIndex) ?? 0)
+                    if let index = Int(deleteIndex), index >= 0, index < viewModel.assignmentList.count {
+                        viewModel.removeAssignment(index)
+                        if (index == 0){
+                            nilBool = true
+                                         }
+                    }
                     deleteIndex = ""
+                    
+                    if (nilBool == false) {
+                        viewModel.removeAssignment(0)
+
+                    }
                 } label: {
                     Image(systemName: "minus.square")
                         .resizable()
                         .frame(width: 25, height: 25)
-                        .offset(x: 97, y: 0)
+                        .padding(.leading, 197)
                 }
             }
 

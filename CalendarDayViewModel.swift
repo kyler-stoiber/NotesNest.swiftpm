@@ -22,7 +22,7 @@ class CalendarDayViewModel: ObservableObject {
         assignmentList.remove(at: index)
         saveAssignments()
     }
-
+    
     private func saveAssignments() {
         if let data = try? JSONEncoder().encode(assignmentList) {
             UserDefaults.standard.set(data, forKey: dateKey)
