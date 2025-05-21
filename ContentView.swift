@@ -24,7 +24,7 @@ struct ContentView: View {
                 
                 
                 
-                /*
+                
                  NavigationView{
                  NavigationLink(destination: AddView()){
                  Image(systemName: "folder.badge.plus.fill")
@@ -32,7 +32,7 @@ struct ContentView: View {
                  .frame(width: 35, height: 25)
                  }
                  }
-                 */
+                 
                 
                 //remove
                 
@@ -50,37 +50,38 @@ struct ContentView: View {
                 
                 
                 
-                /*
-                 
-                 Button {
-                 
-                 
-                 } label: {
-                 Image(systemName: "folder.fill.badge.plus")
-                 .resizable()
-                 .frame(width: 42, height: 30)
-                 .offset(x: -140, y: 0)
-                 }
-                 
-                 
-                 Button {
-                 delete = currentFolder
-                 let max = folder.count
-                 if (((delete ?? 0) <= max) && !(folder.isEmpty) && (delete ?? 0) >= 0){
-                 folder.remove(at: (delete ?? 0))
-                 }
-                 delete = nil
-                 
-                 } label: {
-                 Image(systemName: "folder.badge.minus.fill")
-                 .resizable()
-                 .frame(width: 42, height: 30)
-                 .offset(x: -140, y: 0)
-                 }
-                 
-                 */
                 
-                
+                 
+//                 Button {
+//                 
+//                     
+//                 
+//                 } label: {
+//                 Image(systemName: "folder.fill.badge.plus")
+//                 .resizable()
+//                 .frame(width: 42, height: 30)
+//                 .offset(x: -140, y: 0)
+//                 }
+//                 
+//                 
+//                 Button {
+//                 delete = currentFolder
+//                 let max = folder.count
+//                 if (((delete ?? 0) <= max) && !(folder.isEmpty) && (delete ?? 0) >= 0){
+//                 folder.remove(at: (delete ?? 0))
+//                 }
+//                 delete = nil
+//                 
+//                 } label: {
+//                 Image(systemName: "folder.badge.minus.fill")
+//                 .resizable()
+//                 .frame(width: 42, height: 30)
+//                 .offset(x: -140, y: 0)
+//                 }
+//                 
+//                 
+//                
+//                
                 
                 
             }

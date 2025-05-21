@@ -267,7 +267,7 @@ struct AddView: View {
                     .frame(height: 40)
                 Image(systemName: "plus.circle")
             }
-            
+                        
             /*
              NavigationView {
              List {
