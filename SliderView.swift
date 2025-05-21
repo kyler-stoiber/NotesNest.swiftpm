@@ -1,47 +1,35 @@
-//
-//  SliderView.swift
-//  NotesNest
-//
-//  Created by Rokicki, Thomas (512515) on 5/1/25.
-//
-
 import SwiftUI
 
-
 struct SliderView: View {
-    
-    //@Binding var folderSubject: String
-    let images = ["photo1", "photo2", "photo3"]
-    //@Binding var folderList: [ Folder]
-    
+    @ObservedObject var folderVM: FolderViewModel
+
     var body: some View {
-            
-        HStack{
-            
-            TabView {
-                ForEach(images, id: \.self) { image in
-                    Button{
-                        
-                    }label: {
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.white)
-                            .shadow(radius: 10)
-                            .frame(width: 200, height: 300)
-                            .overlay(Text(""))
-                        
+        NavigationStack {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 20) {
+                    ForEach(folderVM.folderList) { folder in
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(folder.color)
+                                .frame(width: 100, height: 150)
+                                .shadow(radius: 5)
+
+                            VStack(alignment: .leading) {
+                                Text(folder.subject)
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+
+                                Text(folder.desc)
+                                    .font(.subheadline)
+                                    .foregroundColor(.white)
+                            }
+                            .padding()
+                        }
                     }
                 }
+                .padding()
             }
-            .tabViewStyle(PageTabViewStyle())
-            .frame(height: 350)
-           
+            .navigationTitle("My Folders")
         }
     }
-}
-    
-
-
-
-#Preview {
-    SliderView()
 }

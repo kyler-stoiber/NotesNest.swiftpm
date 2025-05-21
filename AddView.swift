@@ -9,13 +9,13 @@ import SwiftUI
 
 struct AddView: View {
     
-    @State var folderList: [Folder] = []
     
     @State var folderDesc = ""
     @State var folderSubject = ""
     //@State var folderDate = ""
     @State var folderColor: Color = .blue
     @State private var calendarIsShowing = true
+    @ObservedObject var folderVM: FolderViewModel
 
         
     var body: some View {
@@ -261,8 +261,8 @@ struct AddView: View {
             }
             
             Button {
-                let newFolder = Folder(color: folderColor,  desc: folderDesc, subject: folderSubject)
-                folderList.append(newFolder)
+                let newFolder = Folder(color: folderColor, desc: folderDesc, subject: folderSubject)
+                folderVM.folderList.append(newFolder)
                 folderColor = .blue
                 folderDesc = ""
                 folderSubject = ""
@@ -272,19 +272,7 @@ struct AddView: View {
                 Image(systemName: "plus.circle")
             }
                         
-            /*
-             NavigationView {
-             List {
-             ForEach(folderList, id: \.self) {
-             newFolder in
-             NavigationLink("\(newFolder.subject)") {
-             DetailedView(selectedFolder: newFolder)
-             }
-             }
-             }
-             }
-             
-             */
+            
         }
     }
 }
@@ -293,7 +281,7 @@ struct AddView: View {
 
 
 #Preview {
-    AddView()
+    AddView(folderVM: FolderViewModel())
 }
 
 

@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct Folder: Hashable {
+struct Folder: Identifiable, Equatable {
     
+    let id = UUID()
     var color: Color
     var desc: String
     var subject: String

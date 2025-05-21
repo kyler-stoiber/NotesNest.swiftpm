@@ -14,133 +14,16 @@ struct ContentView: View {
     @State private var selectedTab = 0
     @State private var calendarIsShowing = true
     @State private var buttonOffset = 0
+    @StateObject var folderVM = FolderViewModel()
+    
     var body: some View {
         
+    
+
+    
         
             
         VStack {
-            
-            HStack {
-                
-                
-                
-                
-                 NavigationView{
-                 NavigationLink(destination: AddView()){
-                 Image(systemName: "folder.badge.plus.fill")
-                 .resizable()
-                 .frame(width: 35, height: 25)
-                 }
-                 }
-                 
-                
-                //remove
-                
-                
-                    
-                    /*
-                     Stretch2View()
-                     .tabItem {
-                     Label("Stretch #2", systemImage: "02.square")
-                     }
-                     */
-                    
-                    
-                
-                
-                
-                
-                
-                 
-//                 Button {
-//                 
-//                     
-//                 
-//                 } label: {
-//                 Image(systemName: "folder.fill.badge.plus")
-//                 .resizable()
-//                 .frame(width: 42, height: 30)
-//                 .offset(x: -140, y: 0)
-//                 }
-//                 
-//                 
-//                 Button {
-//                 delete = currentFolder
-//                 let max = folder.count
-//                 if (((delete ?? 0) <= max) && !(folder.isEmpty) && (delete ?? 0) >= 0){
-//                 folder.remove(at: (delete ?? 0))
-//                 }
-//                 delete = nil
-//                 
-//                 } label: {
-//                 Image(systemName: "folder.badge.minus.fill")
-//                 .resizable()
-//                 .frame(width: 42, height: 30)
-//                 .offset(x: -140, y: 0)
-//                 }
-//                 
-//                 
-//                
-//                
-                
-                
-            }
-            
-            /*
-             HStack {
-             Button(action: {
-             slideToPrevious()
-             }) {
-             Image(systemName: "arrow.left.circle.fill")
-             .resizable()
-             .frame(width: 50, height: 50)
-             .foregroundColor(.blue)
-             }
-             Spacer()
-             
-             // Notebook view with sliding animation
-             
-             RoundedRectangle(cornerRadius: 20)
-             .fill(Color.white)
-             .shadow(radius: 10)
-             .frame(width: 200, height: 300)
-             .overlay(
-             Text(folder.isEmpty ? "No Folder" : folder[currentFolder].subject)
-             .font(.title)
-             .foregroundColor(.black)
-             )
-             .offset(x: offset)
-             .animation(.easeInOut(duration: 0.4), value: offset)
-             .onChange(of: currentFolder) { _ in
-             // Reset offset after change
-             offset = direction * 400
-             withAnimation(.easeInOut(duration: 0.4)) {
-             offset = 0
-             }
-             }
-             
-             
-             Spacer()
-             
-             // Navigation Buttons
-             
-             
-             Button(action: {
-             slideToNext()
-             }) {
-             Image(systemName: "arrow.right.circle.fill")
-             .resizable()
-             .frame(width: 50, height: 50)
-             .foregroundColor(.blue)
-             }
-             
-             .padding(.bottom)
-             }
-             .frame(maxWidth: .infinity, maxHeight: .infinity)
-             .background(Color.gray.opacity(0.2))
-             
-             */
-            
             
             HStack {
                 
@@ -198,9 +81,10 @@ struct ContentView: View {
             
             
             if (calendarIsShowing == true) {
+                SliderView(folderVM: folderVM)
                 CalendarView()
             } else {
-                AddView()
+                AddView(folderVM: folderVM)
             }
         }
                 
